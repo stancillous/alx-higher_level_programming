@@ -11,5 +11,4 @@ while a >= 97:
         output += chr(a-32)
         state = "lower"
     a = a - 1
-
-print(output, end="")
+print("{}".format(output), end="")
