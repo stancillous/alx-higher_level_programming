@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-import glob
-files = glob.glob("*.pyc")
 
-for file in files:
-    filtered_names = [name for name in dir(file) if not name.startswith('_')]
-    print(filtered_names)
+import hidden_4
+if __name__ == "__main__":
+
+    for file in dir(hidden_4):
+        if file[0] != '_' and file[1] != '_':
+            print(file)
