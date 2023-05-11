@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from main import add, sub, mul, div
+from calculator_1 import add, sub, mul, div
 
 def calculator(a, ops, b):
     operators = ["+", "-", "*", "/"]
@@ -19,8 +19,8 @@ def calculator(a, ops, b):
 
 if __name__ == "__main__":
     import sys
-    argvLen = len(sys.argv)-1
-    if argvLen != 3:
+    argvLen = len(sys.argv)
+    if argvLen != 4:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)
     a = int(sys.argv[1])
