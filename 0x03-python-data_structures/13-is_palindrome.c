@@ -1,3 +1,11 @@
+#include "lists.h"
+
+/**
+ * is_palindrome - check if linked list is a palindrome
+ * @head: double pointer to head
+ * Return: int
+ */
+
 int is_palindrome(listint_t **head)
 {
   listint_t *trav = *head;
