@@ -12,7 +12,7 @@ int is_palindrome(listint_t **head)
   int i = 0, len;
   int a , b; /*for looping*/
   int *mylist;
-  int reversedList[100];
+  int reversedList[10];
   if (*head == NULL)
   {
     return (1);
