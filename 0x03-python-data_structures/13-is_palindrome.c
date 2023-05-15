@@ -12,7 +12,7 @@ int is_palindrome(listint_t **head)
   int i = 0, len;
   int a , b; /*for looping*/
   int *mylist;
-  int reversedList[len];
+  int reversedList[10];
   if (*head == NULL)
   {
     return (1);
@@ -32,7 +32,6 @@ int is_palindrome(listint_t **head)
   mylist[i] = trav->n;
   len = i + 1;
 
-    
     /*Iterate through the original list and*/
   /*add elements to the new list in reverse order*/
     for (a = len - 1, b = 0; a >= 0; a--, b++) {
