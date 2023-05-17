@@ -3,4 +3,6 @@ def print_sorted_dictionary(a_dictionary):
     new_dict = {}
     for key in sorted(a_dictionary):
         new_dict[key] = a_dictionary[key]
-    print(new_dict)
+
+    for i, j in new_dict.items():
+        print("{}: {}".format(i,j))
