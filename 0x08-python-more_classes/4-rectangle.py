@@ -106,10 +106,5 @@ class Rectangle:
 		return rect[:-1]
 	
 	def __repr__(self):
-            """method to return str rep of instance
-            Return:
-            instance str representation
-            """
-
 	    return "Rectangle({}, {})".format(self._width, self._height)
 	
