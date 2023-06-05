@@ -88,30 +88,11 @@ class Rectangle:
 		
 		self._height = value
 
-        def area(self):
-            """method to get area of rect
-            Return:
-            returns area of rectangle
-            """
+	def area(self):
+		return self._width * self._height
+	
+	def perimeter(self):
+		if self._width == 0 or self._height == 0:
+			return 0
+		return 2* (self._height + self._width)
 
-            return self._width * self_.height
-
-        def perimeter(self):
-            """method to get rect perimeter
-            Return:
-            perimeter
-            """
-
-            if self._height == 0 or self._width == 0:
-                return 0
-            return 2*(self._height + self._width)
-
-
-my_rectangle = Rectangle(2, 4)
-print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
-
-print("--")
-
-my_rectangle.width = 10
-my_rectangle.height = 3
-print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
