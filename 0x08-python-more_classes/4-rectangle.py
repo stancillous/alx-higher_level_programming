@@ -111,5 +111,5 @@ class Rectangle:
             instance str representation
             """
 
-		return "Rectangle({}, {})".format(self._width, self._height)
+	    return "Rectangle({}, {})".format(self._width, self._height)
 	
