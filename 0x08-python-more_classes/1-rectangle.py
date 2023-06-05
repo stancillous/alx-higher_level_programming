@@ -4,10 +4,11 @@
 Real definition of a rectangle
 """
 
+
 class Rectangle:
     """class rectangle"""
 
-    def __init__(self, width = 0, height = 0):
+    def __init__(self, width=0, height=0):
         """init the instance
         Args:
         width: rectangle width
@@ -39,7 +40,7 @@ class Rectangle:
             ValueError: width < 0
             """
 
-            if isinstance(value, int) == False:
+            if not(isinstance(value, int)):
                 raise TypeError("width must be an integer")
             if value < 0:
                 raise ValueError("width must be >= 0")
@@ -67,7 +68,7 @@ class Rectangle:
 
                 """
 
-                if isinstance(value, int) == False:
+                if not(isinstance(value, int)):
                     raise TypeError("height must be an integer")
                 if value < 0:
                     raise ValueError("Height must be >= 0")
