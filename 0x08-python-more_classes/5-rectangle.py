@@ -106,8 +106,9 @@ class Rectangle:
 		return rect[:-1]
 	
 	def __repr__(self):
-	    return "Rectangle({}, {})".format(self._width, self._height)
-
-        def __del__(self):
-            print("Bye rectangle...")
+		return "Rectangle({}, {})".format(self._width, self._height)
 	
+	def __del__(self):
+		print("Bye rectangle...")
+
+
