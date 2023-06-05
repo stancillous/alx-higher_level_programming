@@ -1,88 +1,74 @@
 #!/usr/bin/python3
 
 """
-Real Definition of a rectangle
+Real definition of a rectangle
 """
+
 class Rectangle:
-	"""Class rectangle"""
-    
-	def __init__(self, width = 0, height = 0):
+    """class rectangle"""
 
-		""" Method that initializes the instance
-
+    def __init__(self, width = 0, height = 0):
+        """init the instance
         Args:
-            width: width of the rectangle
-            height: height of the rectangle
-
+        width: rectangle width
+        height: rectangle height
 
         """
 
-		self._width = width
-		self._height = height
+        self._width = width
+        self._height = height
 
-	@property
-	def width(self):
-		""" method that returns width value
+        @property
+        def width(self):
+            """Method to return width value
+            Returns:
+            width of rectangle
+            """
 
-        Returns:
-            width of the rectangle
+            return self._width
 
-
-        """
-		return self._width
-	
-	@width.setter
-	def width(self, value):
-		""" method that defines the width
-
-        Args:
+        @width.setter
+        def width(self, value):
+            """
+            defines the width
+            Args:
             value: width
 
-        Raises:
-            TypeError: if width is not an integer
-            ValueError: if width is less than zero
+            Raise:
+            TypeError: width not int
+            ValueError: width < 0
+            """
 
+            if isinstance(value, int) == False:
+                raise TypeError("width must be an integer")
+            if value < 0:
+                raise ValueError("width must be >= 0")
+            self._width = value
 
-        """
+            @property
+            def height(self):
+                """
+                method to return height value
+                Returns:
+                height ofrectangle
+                """
 
+                return self._height
 
-		if isinstance(value, int) == False:
-			raise ValueError("width must be an integer")
-		if value < 0:
-			raise ValueError("width must be >= 0")
-		else:
-			self._width = value
+            @height.setter
+            def height(self, value):
+                """
+                method to define height
+                Args:
+                value: height
+                Raise:
+                TypeError: height not an int
+                ValueError: height < 0
 
-	@property
-	def height(self):
-		""" method that returns height value
+                """
 
-        Returns:
-            height of the rectangle
-
-
-        """
-
-		return self._height
-	
-	@height.setter
-	def height(self, value):
-		""" method that defines the height
-
-        Args:
-            value: height
-
-        Raises:
-            TypeError: if height is not an integer
-            ValueError: if height is less than zero
-
-
-        """
-
-		if isinstance(value, int) == False:
-			raise ValueError("height must be an integer")
-		if value < 0:
-			raise ValueError("height must be >= 0")
-		
-		self._height = value
-
+                if isinstance(value, int) == False:
+                    raise TypeError("height must be an integer")
+                if value < 0:
+                    raise ValueError("Height must be >= 0")
+                self._height = value
