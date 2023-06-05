@@ -10,81 +10,81 @@ class Rectangle:
     
 	def __init__(self, width = 0, height = 0):
 
-	    """ Method that initializes the instance
+		""" Method that initializes the instance
 
-            Args:
-                width: width of the rectangle
-                height: height of the rectangle
+        Args:
+            width: width of the rectangle
+            height: height of the rectangle
 
 
-            """
+        """
 
-	    self._width = width
-	    self._height = height
+		self._width = width
+		self._height = height
 
 	@property
 	def width(self):
-	    """ method that returns width value
+		""" method that returns width value
 
-            Returns:
-                width of the rectangle
+        Returns:
+            width of the rectangle
 
 
-            """
-	    return self._width
+        """
+		return self._width
 	
 	@width.setter
 	def width(self, value):
-	    """ method that defines the width
+		""" method that defines the width
 
-            Args:
-                value: width
+        Args:
+            value: width
 
-            Raises:
-                TypeError: if width is not an integer
-                ValueError: if width is less than zero
-
-
-            """
+        Raises:
+            TypeError: if width is not an integer
+            ValueError: if width is less than zero
 
 
-	    if isinstance(value, int) == False:
-		raise TypeError("width must be an integer")
-	    if value < 0:
-		raise ValueError("width must be >= 0")
-	    else:
-		self._width = value
+        """
+
+
+		if isinstance(value, int) == False:
+			raise TypeError("width must be an integer")
+		if value < 0:
+			raise ValueError("width must be >= 0")
+		else:
+			self._width = value
 
 	@property
 	def height(self):
-	    """ method that returns height value
+		""" method that returns height value
 
-            Returns:
+        Returns:
             height of the rectangle
 
 
-            """
+        """
 
-	    return self._height
+		return self._height
 	
 	@height.setter
 	def height(self, value):
-	    """ method that defines the height
+		""" method that defines the height
 
-            Args:
-                value: height
+        Args:
+            value: height
 
-            Raises:
-                TypeError: if height is not an integer
-                ValueError: if height is less than zero
+        Raises:
+            TypeError: if height is not an integer
+            ValueError: if height is less than zero
 
 
-            """
+        """
 
-	    if isinstance(value, int) == False:
-	        raise TypeError("height must be an integer")
-	    if value < 0:
-	        raise ValueError("height must be >= 0")
+		if isinstance(value, int) == False:
+			raise TypeError("height must be an integer")
+		if value < 0:
+			raise ValueError("height must be >= 0")
 		
-	    self._height = value
+		self._height = value
 
