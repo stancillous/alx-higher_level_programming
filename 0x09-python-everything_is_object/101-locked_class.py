@@ -1,4 +1,6 @@
-#!/user/bin/python3
+#!/usr/bin/python3
+"""define locked class
+"""
 class LockedClass:
     """
     prevent object instantiation of any attr
