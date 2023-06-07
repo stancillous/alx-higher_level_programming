@@ -6,7 +6,7 @@ class Square:
     """
     new Square class
     """
-    def __init__(self, size=0, position = (0, 0)):
+    def __init__(self, size=0, position=(0, 0)):
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         if size < 0:
@@ -30,13 +30,13 @@ class Square:
         self.__size = value
     @property
     def position(self):
-        """ returns the position value
+        """ Method that returns the position value
         """
         return self.__position
 
     @position.setter
     def position(self, value):
-        """that sets the position value of a square object
+        """ Method that sets the position value of a square object
         """
         if not isinstance(value, tuple):
             raise TypeError("position must be a tuple of 2 positive integers")
