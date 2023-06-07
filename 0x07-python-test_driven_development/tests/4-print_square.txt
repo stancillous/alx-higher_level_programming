@@ -1,0 +1,61 @@
+``4-print_square`` code test
+
+Using ``print_square`` function
+
+test cases for the function ``print_square``.
+The function should to print a square.
+import function like this:
+    
+    >>> print_square = __import__('4-print_square').print_square
+
+How to use it:
+
+if size is 4
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+if size is 0
+   
+    >>> print_square(0)
+    
+
+if size parameter is a string
+   
+    >>> print_square("3")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+size parameter must be greater or equal to 0
+ 
+    >>> print_square(-1)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+size parameter is float and less than 0
+
+    >>> print_square(-1.2)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+size parameter is a list
+    
+    >>> print_square([1, 2])
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+size parameter is a tuple
+
+    >>> print_square((1, 2))
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+size parameter is empty
+
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
