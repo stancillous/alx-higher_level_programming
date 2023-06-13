@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""module to conv class to object"""
 
 
 def class_to_json(obj):
@@ -6,4 +7,4 @@ def class_to_json(obj):
     Args:
         obj: instance of aclass
     """
-    return vars(obj)
+    return obj.__dict__
