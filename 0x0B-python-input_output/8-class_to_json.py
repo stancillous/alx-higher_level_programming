@@ -10,4 +10,7 @@ def class_to_json(obj):
     Args:
         obj: instance of aclass
     """
-    return obj.__dict__
+    dict = {}
+    if hasattr(obj, "__dict__"):
+        dict = obj.__dict__.copy()
+    return dict_
