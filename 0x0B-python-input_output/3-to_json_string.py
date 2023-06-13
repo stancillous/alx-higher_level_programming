@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""importing json module that has the relevant methods"""
 import json
 """func to return json string of obj"""
 
