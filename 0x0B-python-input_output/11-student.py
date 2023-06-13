@@ -19,6 +19,7 @@ class Student:
                     new_dict[key] = self.__dict__[key]
             return new_dict
         return self.__dict__
+
     def reload_from_json(self, json):
         """method to replace obj attrs"""
         self.__dict__ = json
