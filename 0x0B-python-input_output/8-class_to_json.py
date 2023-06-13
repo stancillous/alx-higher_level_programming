@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-"""importing json module"""
-import json
-
-"""func to convert class obj to json"""
 
 
 def class_to_json(obj):
