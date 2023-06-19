@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-Rectangle = __import__('rectangle').Rectangle
+from models.rectangle import Rectangle
 """class Square, inherits from Rectangle."""
 
 

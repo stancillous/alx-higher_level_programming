@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """importing our base class"""
-Base = __import__('base').Base
+from models.base import Base
 """class Rectangle that inherits from Base"""
 
 

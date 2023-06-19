@@ -2,9 +2,7 @@
 """importing modules"""
 import unittest
 import json
-from models.rectangle import Rectangle
-from models.square import Square
-from models.base import Base
+from models import square
 
 
 class TestSquare(unittest.TestCase):
@@ -12,7 +10,7 @@ class TestSquare(unittest.TestCase):
     
     def setUp(self):
         """setup method"""
-        self.square = Square(9, 12, 63, 11)
+        self.square = square.Square(9, 12, 63, 11)
 
     def test_id(self):
         """test method for id"""
@@ -46,7 +44,7 @@ class TestSquare(unittest.TestCase):
 
     def test_to_dictionary(self):
         """test method"""
-        s1 = Square(10, 2, 1)
+        s1 = square.Square(10, 2, 1)
         s1_dict = s1.to_dictionary()
         self.assertEqual(s1_dict, {'id': 1, 'x': 2, 'size': 10, 'y': 1})
 
