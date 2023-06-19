@@ -44,9 +44,8 @@ class TestSquare(unittest.TestCase):
 
     def test_to_dictionary(self):
         """test method"""
-        s1 = square.Square(10, 2, 1)
-        s1_dict = s1.to_dictionary()
-        self.assertEqual(s1_dict, {'id': 1, 'x': 2, 'size': 10, 'y': 1})
+        s1_dict = self.square.to_dictionary()
+        self.assertEqual(s1_dict, {'id': 11, 'x': 12, 'size': 9, 'y': 63})
 
     def test_str(self):
         """testing __str__ method"""
