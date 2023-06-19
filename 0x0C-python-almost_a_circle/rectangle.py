@@ -171,3 +171,13 @@ class Rectangle(Base):
                 self.x = args[3]
             if len(args) > 4:
                 self.y = args[4]
+
+    def to_dictionary(self):
+        """return dict rep of a Rectangle"""
+        rectDict = {}
+        rectDict.update({'x': self.x})
+        rectDict.update({'y': self.y})
+        rectDict.update({'id': self.id})
+        rectDict.update({'height': self.height})
+        rectDict.update({'width': self.width})
+        return rectDict
