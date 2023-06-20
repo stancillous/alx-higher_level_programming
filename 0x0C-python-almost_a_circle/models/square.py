@@ -12,7 +12,8 @@ class Square(Rectangle):
 
     def __str__(self):
         """method for str"""
-        return ("[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.height))
+        return ("[Square] ({}) {}/{} - {}"
+                .format(self.id, self.x, self.y, self.height))
 
     @property
     def size(self):
@@ -59,8 +60,7 @@ class Square(Rectangle):
     def to_dictionary(self):
         """method to return the dict rep of a Square"""
         squareDict = super().to_dictionary()
-        del  squareDict['height']
+        del squareDict['height']
         del squareDict['width']
         squareDict.update({'size': self.size})
         return squareDict
-
