@@ -4,7 +4,7 @@ const fact = factorial(num);
 console.log(fact);
 
 function factorial (n) {
-  if (isNaN(n) || a <= 1) {
+  if (isNaN(n) || n <= 1) {
     return 1;
   }
   return (n * factorial(n - 1));
