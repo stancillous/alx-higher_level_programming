@@ -12,4 +12,3 @@ if (args.length <= 3) {
   arr.sort((a, b) => b - a);
   console.log(arr[1]);
 }
-
