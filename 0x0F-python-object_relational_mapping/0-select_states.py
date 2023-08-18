@@ -19,3 +19,5 @@ if __name__ == "__main__":
     """rows will be a list of tuples"""
     for row in rows:
         print(row)
+    cur.close()
+    db.close()
