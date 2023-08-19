@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""script that lists all State objects
+from the database hbtn_0e_6_usa"""
+
 if __name__ == "__main__":
     import sys
     from sqlalchemy import create_engine
@@ -10,7 +13,7 @@ if __name__ == "__main__":
     pswd = sys.argv[2]
     dbName = sys.argv[3]
 
-    engine = create_engine(f"mysql+mysqldb://{dbUser}:{pswd}@localhost:3306/{dbName}")
+    engine = create_engine(f"mysql+mysqldb://{dbUser}:{pswd}@localhost:3306/{dbName}",pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
