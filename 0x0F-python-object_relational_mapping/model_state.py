@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -23,7 +24,7 @@ class State(Base):
         self.name = name
 
 
-engine = create_engine(f"sqlite://{dbUser}:{pswd}@localhost:3306/{dbName}")
+engine = create_engine(f"mysql+mysqldb://{dbUser}:{pswd}@localhost/{dbName}")
 Base.metadata.create_all(bind=engine)
 
 Session = sessionmaker(bind=engine)
