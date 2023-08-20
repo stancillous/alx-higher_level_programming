@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List all State objects with letter a"""
+"""Update state object"""
 
 if __name__ == '__main__':
 
@@ -16,7 +16,6 @@ if __name__ == '__main__':
     DB = sys.argv[3]
     HST = 'localhost'
     PRT = '3306'
-    state_name = sys.argv[4]
 
     connection_url = f"mysql://{USR}:{PWD}@{HST}:{PRT}/{DB}"
 
@@ -29,15 +28,17 @@ if __name__ == '__main__':
     """Session with database started"""
     session = Session()
 
-    """Sample query"""
-    states = session.query(State).\
-        filter(State.name == state_name).order_by(State.id.asc()).all()
+    # """New state"""
+    # new_state = State(name='Louisiana')
 
-    # print("\n", states, "\n")
+    # """Add new state"""
+    # session.add(new_state)
 
-    """Iterateing through results of query"""
-    if (len(states) != 0):
-        for state in states:
-            print(f"{state.id}")
-    else:
-        print("Not found")
+    """Query state to update"""
+    states = session.query(State).filter(State.id == '2').first()
+
+    """Update the state"""
+    states.name = 'New Mexico'
+
+    """Commit changes to DB"""
+    session.commit()

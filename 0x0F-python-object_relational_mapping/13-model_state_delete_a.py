@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List all State objects with letter a"""
+"""Delete states with 'a'"""
 
 if __name__ == '__main__':
 
@@ -16,7 +16,6 @@ if __name__ == '__main__':
     DB = sys.argv[3]
     HST = 'localhost'
     PRT = '3306'
-    state_name = sys.argv[4]
 
     connection_url = f"mysql://{USR}:{PWD}@{HST}:{PRT}/{DB}"
 
@@ -31,13 +30,10 @@ if __name__ == '__main__':
 
     """Sample query"""
     states = session.query(State).\
-        filter(State.name == state_name).order_by(State.id.asc()).all()
+        filter(State.name.like('%a%')).order_by(State.id.asc())
 
-    # print("\n", states, "\n")
+    for state in states:
+        session.delete(state)
 
-    """Iterateing through results of query"""
-    if (len(states) != 0):
-        for state in states:
-            print(f"{state.id}")
-    else:
-        print("Not found")
+    """Commit changes to DB"""
+    session.commit()

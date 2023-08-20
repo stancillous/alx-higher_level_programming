@@ -1,27 +1,37 @@
 #!/usr/bin/python3
-"""
-List all State objects that contain the letter "a" from the database
-"""
-
-from sys import argv
-from model_state import Base, State
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
+"""List all State objects with letter a"""
 
 if __name__ == '__main__':
-    engine = create_engine(
-        f"mysql+mysqldb://{argv[1]}:{argv[2]}@localhost:3306/{argv[3]}",
-        pool_pre_ping=True
-    )
 
-    Base.metadata.create_all(engine)
+    import sqlalchemy
+    from sqlalchemy import create_engine,\
+        Column, Integer, UniqueConstraint, String
+    from sqlalchemy.ext.declarative import declarative_base
+    from model_state import Base, State
+    import sys
+    from sqlalchemy.orm import sessionmaker
 
+    USR = sys.argv[1]
+    PWD = sys.argv[2]
+    DB = sys.argv[3]
+    HST = 'localhost'
+    PRT = '3306'
+
+    connection_url = f"mysql://{USR}:{PWD}@{HST}:{PRT}/{DB}"
+
+    """Engine to connect to DB"""
+    engine = create_engine(connection_url)
+
+    """Session class for session objects"""
     Session = sessionmaker(bind=engine)
+
+    """Session with database started"""
     session = Session()
 
-    states = session.query(State).filter(State.name.like("%a%")).all()
+    """Sample query"""
+    states = session.query(State).\
+        filter(State.name.like('%a%')).order_by(State.id.asc())
 
+    """Iterateing through results of query"""
     for state in states:
         print(f"{state.id}: {state.name}")
-
-    session.close()
