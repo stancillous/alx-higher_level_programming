@@ -9,11 +9,7 @@ if __name__ == "__main__":
     from sqlalchemy.orm import sessionmaker
 
 
-    dbUser = sys.argv[1]
-    pswd = sys.argv[2]
-    dbName = sys.argv[3]
-
-    engine = create_engine(f"mysql+mysqldb://{dbUser}:{pswd}@localhost:3306/{dbName}",pool_pre_ping=True)
+    engine = create_engine("mysql://ray:raypassword@localhost/hbtn_0e_0_usa",pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
