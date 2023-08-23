@@ -1,11 +1,10 @@
-from sqlalchemy import Column, String, Integer
+#!/usr/bin/python3
 from model_state import Base
+from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
 
 class City(Base):
-    __tablename__ = "city"
-    id = Column(Integer, unique=True, primary_key=True)
-    Name = Column(String)
-    CountryCode = Column(String)
-    District = Column(String)
-    Population = Column(Integer)
-   
+    __tablename__ = "cities"
+    id = Column(Integer, autoincrement=True, unique=True, nullable=False, primary_key=True)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+    

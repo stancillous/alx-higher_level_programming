@@ -1,18 +1,24 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from model_city import Cities
+#!/usr/bin/python3
 
 if __name__ == "__main__":
     import sys
+    from model_state import Base, State
+    from model_city import City
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+
     dbUser = sys.argv[1]
     dbPwd = sys.argv[2]
     dbName = sys.argv[3]
 
-    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost/{dbName}", pool_pre_ping=True)
+    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost:3306/{dbName}")
 
     Session = sessionmaker(bind=engine)
-    #instance of the Session
     session = Session()
 
-    #our query
-    citiesQuery = session.query(Cities).order_by(Cities.id).all()
+    res = session.query(City).order_by(City.id).all()
+
+    for city in res:
+        state_name = (session.query(State).
+                      filter(city.state_id == State.id).first())
+        print(f"{state_name.name}: ({city.id}) {city.name}")
