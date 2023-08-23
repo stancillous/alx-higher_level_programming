@@ -10,7 +10,7 @@ if __name__ == "__main__":
     dbPwd = sys.argv[2]
     dbName = sys.argv[3]
 
-    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost/{dbName}")
+    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost:3306/{dbName}")
     Session = sessionmaker(bind=engine)
     # instance of Session
     session = Session()
