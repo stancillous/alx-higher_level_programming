@@ -21,4 +21,3 @@ if __name__ == "__main__":
         print(f"{res.id}: {res.name}")
     else:
         print("Nothing")
-
