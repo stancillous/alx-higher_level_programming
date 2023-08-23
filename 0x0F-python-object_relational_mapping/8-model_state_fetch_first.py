@@ -7,32 +7,18 @@ if __name__ == '__main__':
     from sqlalchemy import create_engine,\
         Column, Integer, UniqueConstraint, String
     from sqlalchemy.ext.declarative import declarative_base
-    from model_state import Base, State
+    from model_city import City, Base
     import sys
     from sqlalchemy.orm import sessionmaker
 
-    USR = sys.argv[1]
-    PWD = sys.argv[2]
-    DB = sys.argv[3]
-    HST = 'localhost'
-    PRT = '3306'
 
-    connection_url = f"mysql://{USR}:{PWD}@{HST}:{PRT}/{DB}"
+    engine = create_engine("mysql://ray:raypassword@localhost/world")
+    Base.metadata.create_all(engine)
 
-    """Engine to connect to DB"""
-    engine = create_engine(connection_url)
-
-    """Session class for session objects"""
     Session = sessionmaker(bind=engine)
-
-    """Session with database started"""
     session = Session()
-
-    """Sample query"""
-    states = session.query(State).order_by(State.id.asc()).first()
-
-    if (states is not None):
-        print(f"{states.id}: {states.name}")
-
-    else:
-        print("Nothing")
+    new_city = City(Name="Nairobi", CountryCode="254", District="Idek", Population=323390)
+    session.add(new_city)
+    session.commit()
+    print(new_city.id)
+    session.close()

@@ -1,28 +1,21 @@
-#!/usr/bin/python3
-"""script that lists all State objects
-from the database hbtn_0e_6_usa"""
+import sys
+from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    import sys
-    from sqlalchemy import create_engine
-    from model_state import State, Base
-    from sqlalchemy.orm import sessionmaker
+    dbUser = sys.argv[1]
+    dbPwd = sys.argv[2]
+    dbName = sys.argv[3]
 
-
-    engine = create_engine("mysql://ray:raypassword@localhost/hbtn_0e_0_usa",pool_pre_ping=True)
-    Base.metadata.create_all(engine)
-
+    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost/{dbName}")
     Session = sessionmaker(bind=engine)
+    # instance of Session
     session = Session()
 
-    # Query the State objects from the database and sort by states.id
-    states = session.query(State).order_by(State.id).all()
+    results = session.query(State).all()
+    for item in results:
+        print(f"{item.id}:{item.name}")
 
-    # Display the results
-    for item in states:
-        print(f"{item.id}: {item.name}")
-
-    # Close the session
-    session.close()
 
 

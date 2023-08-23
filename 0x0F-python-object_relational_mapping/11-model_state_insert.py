@@ -23,6 +23,7 @@ if __name__ == '__main__':
 
     # Add the State object "Louisiana" to the database
     new_state = State(name="Louisiana")
+    
     session.add(new_state)
     session.commit()
 
