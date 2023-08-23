@@ -15,7 +15,7 @@ if __name__ == "__main__":
     # instance of Session
     session = Session()
 
-    results = session.query(State).order_by(State.id.asc).all()
+    results = session.query(State).order_by(State.id.asc()).all()
     for item in results:
         print(f"{item.id}: {item.name}")
 
