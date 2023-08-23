@@ -1,33 +1,20 @@
 #!/usr/bin/python3
-"""
-Script that add to the State object
-"""
-
-from sys import argv
-from model_state import Base, State
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
-
+"""add a new state to the database"""
 if __name__ == '__main__':
 
-    # Connect to the database
-    engine = create_engine(
-        f"mysql+mysqldb://{argv[1]}:{argv[2]}@localhost:3306/{argv[3]}",
-        pool_pre_ping=True
-    )
+    import sys
+    from sqlalchemy import create_engine
+    from model_state import Base, State
+    from sqlalchemy.orm import sessionmaker
 
-    Base.metadata.create_all(engine)
+    dbUser = sys.argv[1]
+    dbPwd = sys.argv[2]
+    dbName = sys.argv[3]
 
+    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost:3306/{dbName}")
     Session = sessionmaker(bind=engine)
     session = Session()
-
-    # Add the State object "Louisiana" to the database
-    new_state = State(name="Louisiana")
-    
+    new_state = State(name='Louisiana')
     session.add(new_state)
     session.commit()
-
-    # Print the new state's id
     print(new_state.id)
-
-    session.close()
