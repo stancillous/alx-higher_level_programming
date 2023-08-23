@@ -3,12 +3,9 @@
 
 if __name__ == '__main__':
 
-    import sqlalchemy
-    from sqlalchemy import create_engine, \
-        Column, Integer, UniqueConstraint, String
-    from sqlalchemy.ext.declarative import declarative_base
-    from model_state import Base, State
     import sys
+    from sqlalchemy import create_engine
+    from model_state import Base, State
     from sqlalchemy.orm import sessionmaker
 
     dbUser = sys.argv[1]
