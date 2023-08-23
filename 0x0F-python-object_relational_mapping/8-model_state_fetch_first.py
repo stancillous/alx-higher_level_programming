@@ -1,24 +1,23 @@
 #!/usr/bin/python3
-"""List the first state object"""
+"""script that prints the first State object from a database"""
 
-if __name__ == '__main__':
-
-    import sqlalchemy
-    from sqlalchemy import create_engine,\
-        Column, Integer, UniqueConstraint, String
-    from sqlalchemy.ext.declarative import declarative_base
-    from model_city import City, Base
+if __name__ == "__main__":
     import sys
+    from model_state import Base, State
+    from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
+    dbUser = sys.argv[1]
+    dbPwd = sys.argv[2]
+    dbName = sys.argv[3]
 
-    engine = create_engine("mysql://ray:raypassword@localhost/world")
-    Base.metadata.create_all(engine)
+    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost:3306/{dbName}")
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    new_city = City(Name="Nairobi", CountryCode="254", District="Idek", Population=323390)
-    session.add(new_city)
-    session.commit()
-    print(new_city.id)
-    session.close()
+    res = session.query(State).order_by(State.id.asc()).first()
+
+    if res != None:
+        print(f"{res.id}: {res.name}")
+    else:
+        print("Nothing")
