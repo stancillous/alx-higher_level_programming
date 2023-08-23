@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""script that lists all State objects from a database"""
 import sys
 from model_state import Base, State
 from sqlalchemy import create_engine
