@@ -1,38 +1,24 @@
 #!/usr/bin/python3
-"""List the first state object"""
+"""script that prints the first State object from a database"""
 
-if __name__ == '__main__':
-
-    import sqlalchemy
-    from sqlalchemy import create_engine,\
-        Column, Integer, UniqueConstraint, String
-    from sqlalchemy.ext.declarative import declarative_base
-    from model_state import Base, State
+if __name__ == "__main__":
     import sys
+    from model_state import Base, State
+    from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
-    USR = sys.argv[1]
-    PWD = sys.argv[2]
-    DB = sys.argv[3]
-    HST = 'localhost'
-    PRT = '3306'
+    dbUser = sys.argv[1]
+    dbPwd = sys.argv[2]
+    dbName = sys.argv[3]
 
-    connection_url = f"mysql://{USR}:{PWD}@{HST}:{PRT}/{DB}"
+    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost:3306/{dbName}")
 
-    """Engine to connect to DB"""
-    engine = create_engine(connection_url)
-
-    """Session class for session objects"""
     Session = sessionmaker(bind=engine)
-
-    """Session with database started"""
     session = Session()
+    res = session.query(State).order_by(State.id.asc()).first()
 
-    """Sample query"""
-    states = session.query(State).order_by(State.id.asc()).first()
-
-    if (states is not None):
-        print(f"{states.id}: {states.name}")
-
+    if res is not None:
+        print(f"{res.id}: {res.name}")
     else:
         print("Nothing")
+
