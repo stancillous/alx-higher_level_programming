@@ -1,43 +1,29 @@
 #!/usr/bin/python3
-"""List all State objects with letter a"""
+"""script that prints the State object with the name
+passed as argument from the database hbtn_0e_6_usa"""
 
 if __name__ == '__main__':
 
-    import sqlalchemy
-    from sqlalchemy import create_engine,\
-        Column, Integer, UniqueConstraint, String
-    from sqlalchemy.ext.declarative import declarative_base
-    from model_state import Base, State
     import sys
+    from sqlalchemy import create_engine
+    from model_state import Base, State
     from sqlalchemy.orm import sessionmaker
 
-    USR = sys.argv[1]
-    PWD = sys.argv[2]
-    DB = sys.argv[3]
-    HST = 'localhost'
-    PRT = '3306'
+    dbUser = sys.argv[1]
+    dbPwd = sys.argv[2]
+    dbName = sys.argv[3]
     state_name = sys.argv[4]
 
-    connection_url = f"mysql://{USR}:{PWD}@{HST}:{PRT}/{DB}"
+    engine = create_engine(f"mysql://{dbUser}:{dbPwd}@localhost:3306/{dbName}")
 
-    """Engine to connect to DB"""
-    engine = create_engine(connection_url)
-
-    """Session class for session objects"""
     Session = sessionmaker(bind=engine)
-
-    """Session with database started"""
     session = Session()
 
-    """Sample query"""
-    states = session.query(State).\
-        filter(State.name == state_name).order_by(State.id.asc()).all()
+    result = (session.query(State).filter(State.name == state_name).
+              order_by(State.id.asc()).all())
 
-    # print("\n", states, "\n")
-
-    """Iterateing through results of query"""
-    if (len(states) != 0):
-        for state in states:
-            print(f"{state.id}")
+    if (len(result) != 0):
+        for state in result:
+            print(state.id)
     else:
         print("Not found")
