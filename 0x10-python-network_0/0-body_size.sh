@@ -1,5 +1,3 @@
 #!/bin/bash
-# script to display size of body of a response
-# after using curl
-# curl -s -i $1 | grep -i 'content-length' | awk '{print $2}'
+# send a request to an URL with curl, and displays the size of the body of the response
 curl -s "$1" | wc -c
