@@ -10,5 +10,5 @@ if __name__ == "__main__":
     data = {
         "email": emailAddress
     }
-    r = requests.post(url, json=data)
-    print(f"Your email is: {r.text}")
+    r = requests.post(url, data=data)
+    print(r.text)
