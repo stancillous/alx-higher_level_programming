@@ -12,7 +12,7 @@ if __name__ == "__main__":
     try:
         with urlopen(url) as response:
             body = response.read()
-        decoded_body = body.decode("utf-8")
-        print(decoded_body)
+            decoded_body = body.decode("utf-8")
+            print(decoded_body)
     except HTTPError as err:
-        print(f"Error code: {err.status}")
+        print(f"Error code: {err.code}")
