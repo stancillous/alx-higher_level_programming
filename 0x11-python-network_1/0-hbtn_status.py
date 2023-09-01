@@ -10,5 +10,3 @@ with request.urlopen(url) as response:
 
 print("Body response:")
 print(f"\t- {body}")
-
-    

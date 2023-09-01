@@ -10,7 +10,3 @@ if __name__ == "__main__":
     with urlopen(url) as response:
         body = response.read()
     print(response.getheader("X-Request-Id"))
-
-    string = body.decode("utf-8")
-    print(string)
-
