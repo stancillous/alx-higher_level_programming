@@ -1,12 +1,14 @@
 #!/usr/bin/python
 # python script to fetch a url and
 # display the body of the response
-import urllib.request as request
 
-url = "https://alx-intranet.hbtn.io/status"
+if __name__ == "__main__":
+    import urllib.request as request
 
-with request.urlopen(url) as response:
-    body = response.read()
+    url = "https://alx-intranet.hbtn.io/status"
 
-print("Body response:")
-print(f"\t- {body}")
+    with request.urlopen(url) as response:
+        body = response.read()
+
+    print("Body response:")
+    print(f"\t- {body}")
