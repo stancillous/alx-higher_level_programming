@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# script to get a specific header from a url
+"""script to get a specific header from a url"""
 
 
 if __name__ == "__main__":

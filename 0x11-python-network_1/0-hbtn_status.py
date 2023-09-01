@@ -1,6 +1,5 @@
-#!/usr/bin/python
-# python script to fetch a url and
-# display the body of the response
+#!/usr/bin/python3
+"""python script to fetch a url and display the body of the response"""
 
 if __name__ == "__main__":
     import urllib.request as request
