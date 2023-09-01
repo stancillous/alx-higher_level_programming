@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """script to get a specific header from a url"""
 
-
 if __name__ == "__main__":
     import requests
     import sys
