@@ -3,6 +3,7 @@
 
 if __name__ == "__main__":
     from urllib.request import urlopen, Request
+    from urllib.parse import urlencode
     import sys
 
     url = sys.argv[1]
@@ -10,7 +11,9 @@ if __name__ == "__main__":
     data = {
         "email": emailAddress
     }
-    request_object = Request(url, data)
+    url_encoded_data = urlencode(data)
+    utf_encoded_data = url_encoded_data.encode("utf-8")
+    request_object = Request(url, utf_encoded_data)
     with urlopen(request_object) as response:
         body = response.read()
         encoded_body = body.decode("utf-8")
